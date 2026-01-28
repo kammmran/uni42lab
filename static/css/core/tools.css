@@ -1,0 +1,166 @@
+
+.tools-section {
+    padding: 30px 0;
+}
+
+.tools-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tools-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.tools-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-content: center;
+}
+
+.tool-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.tool-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+.tool-image {
+    width: 100%;
+    max-width: 300px;
+    height: 100px;
+    overflow: hidden;
+    align-items: center;
+
+    border-radius: 8px;
+}
+
+.tool-image img {
+    width: 100%;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+
+
+.tool-info {
+    margin-top: 15px;
+}
+
+.tool-name {
+    text-decoration: none;
+    color: #2c3e50;
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: 'Segoe UI', 'Roboto', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.tool-name:hover {
+    color: #34495e;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+
+/* Mobile Phones (up to 768px) */
+@media screen and (max-width: 768px) {
+    .tools-section {
+        padding: 20px 10px;
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .tool-item {
+        padding: 15px;
+    }
+
+    .tool-image {
+        max-width: 100%;
+        height: 80px;
+    }
+
+    .tool-name {
+        font-size: 0.95rem;
+    }
+}
+
+/* Tablets (769px to 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+/* Large Screens (1400px and up) */
+@media screen and (min-width: 1400px) {
+    .tools-section {
+        padding: 50px 0;
+    }
+
+    .tools-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+    }
+
+    .tool-item {
+        padding: 30px;
+    }
+
+    .tool-image {
+        max-width: 350px;
+        height: 130px;
+    }
+
+    .tool-name {
+        font-size: 1.2rem;
+    }
+}
+
+/* Extra Large Screens (1920px and up) */
+@media screen and (min-width: 1920px) {
+    .tools-section {
+        padding: 60px 0;
+    }
+
+    .tools-grid {
+        gap: 50px;
+    }
+
+    .tool-item {
+        padding: 35px;
+    }
+
+    .tool-image {
+        height: 150px;
+    }
+
+    .tool-name {
+        font-size: 1.3rem;
+    }
+}
+
