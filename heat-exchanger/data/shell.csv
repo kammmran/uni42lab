@@ -1,0 +1,2 @@
+inletTemp,outletTemp,inletDiameter,flowRate,innerDiameter,orientation,numPasses,testPressure,corrosionAllowance,designH2Pressure,insulationPurpose,designMetalTemp,mechDesignTempMin,mechDesignTempMax,material,minNozzleDistance
+95,85,150,50000,500,horizontal,1,10,3,15,condensation control,120,-20,150,Carbon Steel,200

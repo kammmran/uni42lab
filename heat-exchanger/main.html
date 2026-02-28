@@ -1,0 +1,233 @@
+<head>
+<title>Simple TEMA HX Design</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="main-container">
+  <!-- Left Side: Heat Exchanger Design -->
+  <div class="left-panel">
+    <h1>HEAT EXCHANGER DESIGN</h1>
+    
+    <div class="tema-display" id="temaDisplay">Current: <span id="temaType">BEM</span></div>
+    
+    <div class="controls">
+        <div>
+            <label for="frontHeadSelect">Front Head:</label>
+            <select id="frontHeadSelect">
+                <option value="A">A - Channel & Removable Cover</option>
+                <option value="B" selected>B - Bonnet (Integral Cover)</option>
+                <option value="C">C - Channel Integral with Tubesheet</option>
+                <option value="N">N - Channel Integral (Alt)</option>
+            </select>
+        </div>
+        <div>
+            <label for="shellSelect">Shell Type:</label>
+            <select id="shellSelect">
+                <option value="E" selected>E - One Pass Shell</option>
+                <option value="F">F - Two Pass Shell (Longitudinal Baffle)</option>
+                <option value="G">G - Split Flow</option>
+                <option value="H">H - Double Split Flow</option>
+                <option value="J">J - Divided Flow</option>
+                <option value="K">K - Kettle Type Reboiler</option>
+                <option value="X">X - Cross Flow</option>
+            </select>
+        </div>
+        <div>
+            <label for="rearHeadSelect">Rear Head:</label>
+            <select id="rearHeadSelect">
+                <option value="L">L - Fixed Tubesheet (Like A)</option>
+                <option value="M" selected>M - Fixed Tubesheet (Like B)</option>
+                <option value="N">N - Fixed Tubesheet (Like N)</option>
+                <option value="P">P - Outside Packed Floating Head</option>
+                <option value="S">S - Floating Head with Backing Device</option>
+                <option value="T">T - Pull Through Floating Head</option>
+                <option value="U">U - U-Tube Bundle</option>
+                <option value="W">W - Externally Sealed Floating</option>
+            </select>
+        </div>
+    </div>
+
+    <canvas id="heatExchangerCanvas" width="750" height="350"></canvas>
+
+    <div class="action-buttons">
+      <button id="loadExampleButton" class="load-example-button">Load Example Data</button>
+      <button id="calculateButton" class="calculate-button">Calculate</button>
+      <button id="simulationButton" class="simulation-button">Start Simulation</button>
+    </div>
+
+    <!-- Temperature Graph (shown during simulation) -->
+    <div class="graph-container" id="graphContainer" style="display: none;">
+      <canvas id="temperatureGraph" width="750" height="180"></canvas>
+    </div>
+  </div>
+
+  <!-- Right Side: Properties Panel -->
+  <div class="right-panel" id="propertyPanel" style="display: none;">
+    <h2 id="popupTitle">Properties</h2>
+    <div class="properties-content">
+      <div id="popupFields"></div>
+    </div>
+    <div class="modal-buttons" id="propertyButtons">
+      <button id="saveButton" class="save">Save</button>
+      <button id="cancelButton" class="cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Right Side: Simulation Panel -->
+  <div class="right-panel simulation-panel" id="simulationPanel" style="display: none;">
+    <h2>Simulation Settings</h2>
+    <div class="properties-content">
+      <!-- Flow Properties -->
+      <div class="sim-section">
+        <h3>Flow Properties</h3>
+        <div class="sim-field">
+          <label for="shellInletTemp">Shell Inlet Temp (°C):</label>
+          <input type="number" id="shellInletTemp" value="150" min="0" max="500">
+        </div>
+        <div class="sim-field">
+          <label for="shellOutletTemp">Shell Outlet Temp (°C):</label>
+          <input type="number" id="shellOutletTemp" value="90" min="0" max="500">
+        </div>
+        <div class="sim-field">
+          <label for="tubeInletTemp">Tube Inlet Temp (°C):</label>
+          <input type="number" id="tubeInletTemp" value="25" min="0" max="500">
+        </div>
+        <div class="sim-field">
+          <label for="tubeOutletTemp">Tube Outlet Temp (°C):</label>
+          <input type="number" id="tubeOutletTemp" value="75" min="0" max="500">
+        </div>
+        <div class="sim-field">
+          <label for="shellFlowRate">Shell Flow Rate (kg/s):</label>
+          <input type="number" id="shellFlowRate" value="5" min="0.1" max="100" step="0.1">
+        </div>
+        <div class="sim-field">
+          <label for="tubeFlowRate">Tube Flow Rate (kg/s):</label>
+          <input type="number" id="tubeFlowRate" value="8" min="0.1" max="100" step="0.1">
+        </div>
+      </div>
+
+      <!-- Animation Controls -->
+      <div class="sim-section">
+        <h3>Animation Controls</h3>
+        <div class="sim-field range-field">
+          <label for="flowSpeed">Flow Speed:</label>
+          <input type="range" id="flowSpeed" min="0.2" max="3" step="0.1" value="1">
+          <span id="flowSpeedValue">1.0x</span>
+        </div>
+        <div class="sim-field range-field">
+          <label for="particleDensity">Particle Density:</label>
+          <input type="range" id="particleDensity" min="20" max="100" step="5" value="50">
+          <span id="particleDensityValue">50</span>
+        </div>
+        <div class="sim-field range-field">
+          <label for="particleSize">Particle Size:</label>
+          <input type="range" id="particleSize" min="2" max="8" step="0.5" value="4">
+          <span id="particleSizeValue">4</span>
+        </div>
+      </div>
+
+      <!-- Visualization Options -->
+      <div class="sim-section">
+        <h3>Visualization</h3>
+        <div class="sim-checkbox">
+          <label><input type="checkbox" id="showTempGradient" checked> Temperature Gradient</label>
+        </div>
+        <div class="sim-checkbox">
+          <label><input type="checkbox" id="showFlowDirection" checked> Flow Direction Arrows</label>
+        </div>
+        <div class="sim-checkbox">
+          <label><input type="checkbox" id="showTurbulence" checked> Turbulence Effect</label>
+        </div>
+        <div class="sim-checkbox">
+          <label><input type="checkbox" id="showHeatTransfer" checked> Heat Transfer Zones</label>
+        </div>
+        <div class="sim-checkbox">
+          <label><input type="checkbox" id="showGraph" checked> Temperature Graph</label>
+        </div>
+      </div>
+
+      <!-- Flow Type -->
+      <div class="sim-section">
+        <h3>Flow Configuration</h3>
+        <div class="sim-field">
+          <label for="flowType">Flow Arrangement:</label>
+          <select id="flowType">
+            <option value="counter" selected>Counter Flow</option>
+            <option value="parallel">Parallel Flow</option>
+          </select>
+        </div>
+        <div class="sim-field">
+          <label for="fluidType">Shell Fluid:</label>
+          <select id="fluidType">
+            <option value="water">Water</option>
+            <option value="oil" selected>Oil</option>
+            <option value="steam">Steam</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Real-time Data -->
+      <div class="sim-section">
+        <h3>Real-time Data</h3>
+        <div class="realtime-data">
+          <div class="data-item">
+            <span class="data-label">Heat Transfer Rate:</span>
+            <span class="data-value" id="heatTransferRate">0 kW</span>
+          </div>
+          <div class="data-item">
+            <span class="data-label">LMTD:</span>
+            <span class="data-value" id="lmtdValue">0 °C</span>
+          </div>
+          <div class="data-item">
+            <span class="data-label">Effectiveness:</span>
+            <span class="data-value" id="effectivenessValue">0 %</span>
+          </div>
+          <div class="data-item">
+            <span class="data-label">Simulation Time:</span>
+            <span class="data-value" id="simTimeValue">0.0 s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-buttons">
+      <button id="resetSimButton" class="reset-sim">Reset</button>
+      <button id="stopSimButton" class="stop-sim">Stop Simulation</button>
+    </div>
+  </div>
+</div>
+
+<div id="calculationPopup" class="fullscreen-modal">
+    <div class="calc-content">
+        <div class="calc-header">
+            <h2>Heat Exchanger Design Results</h2>
+        </div>
+        <div class="calc-content-scroll">
+            <div class="result-section">
+                <h3 class="section-title">Heat Transfer Analysis</h3>
+                <div id="heatTransferResults" class="calc-results">
+                    <!-- Heat transfer results -->
+                </div>
+            </div>
+            <div class="result-section">
+                <h3 class="section-title">Temperature Profile</h3>
+                <div id="temperatureResults" class="calc-results">
+                    <!-- Temperature results -->
+                </div>
+            </div>
+            <div class="result-section">
+                <h3 class="section-title">Performance Metrics</h3>
+                <div id="efficiencyResults" class="calc-results">
+                    <!-- Efficiency results -->
+                </div>
+            </div>
+        </div>
+        <div class="calc-footer">
+            <button id="closeCalcPopup" class="close-button">Close</button>
+        </div>
+    </div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>

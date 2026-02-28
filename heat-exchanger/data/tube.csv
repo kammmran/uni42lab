@@ -1,0 +1,2 @@
+inletTemp,outletTemp,flowRate,inletDiameter,outerDiameter,numTubes,effectiveTubeLength,tubeInnerDiameter,tubePitch,tubeLayout,material
+20,40,25000,16,19,100,3000,16,23.75,triangular,Stainless Steel 316

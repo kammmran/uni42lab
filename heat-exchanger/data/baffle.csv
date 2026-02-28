@@ -1,0 +1,2 @@
+spacing,baffleType,cutOrientation,outerCutPercent,freeEndSpacing,nearEndSpacing,freeOuterHoleArea,tubesInWindow,impingementPlate,material
+300,segmental,horizontal,25,150,150,0.05,15,yes,Carbon Steel
