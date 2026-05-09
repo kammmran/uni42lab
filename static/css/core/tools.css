@@ -45,9 +45,9 @@
 
 
 .tool-image {
-    width: 100%;
+    width: 80%;
     max-width: 300px;
-    height: 100px;
+    height: auto;
     overflow: hidden;
     align-items: center;
 
@@ -57,10 +57,7 @@
 .tool-image img {
     width: 100%;
     align-items: center;
-    transition: transform 0.3s ease;
 }
-
-
 
 .tool-info {
     margin-top: 15px;
@@ -81,30 +78,62 @@
     text-decoration: underline;
 }
 
+.tool-description {
+    margin-top: 8px;
+    margin-bottom: 0;
+    color: #5b6570;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    font-family: 'Segoe UI', 'Roboto', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 /* Responsive Design */
 
 /* Mobile Phones (up to 768px) */
 @media screen and (max-width: 768px) {
     .tools-section {
-        padding: 20px 10px;
+        padding: 16px 0;
     }
 
     .tools-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 14px;
     }
 
     .tool-item {
-        padding: 15px;
+        padding: 16px;
+        border-radius: 12px;
+        align-items: flex-start;
+        text-align: left;
     }
 
     .tool-image {
-        max-width: 100%;
-        height: 80px;
+        width: 100%;
+        max-width: none;
+        height: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        padding: 10px;
+    }
+
+    .tool-image img {
+        height: 100%;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .tool-info {
+        margin-top: 12px;
     }
 
     .tool-name {
-        font-size: 0.95rem;
+        font-size: 1rem;
+    }
+
+    .tool-description {
+        font-size: 0.9rem;
     }
 }
 
@@ -133,7 +162,7 @@
 
     .tool-image {
         max-width: 350px;
-        height: 130px;
+        height: auto;
     }
 
     .tool-name {

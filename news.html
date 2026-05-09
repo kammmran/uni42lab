@@ -8,18 +8,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/core/news.css">
 </head>
 <body>
     <header class="header" id="header">
         <div class="header-container">
             <a href="index.html" class="logo">
-                <img src="static/images/logo2.png" alt="Uni42Tech Logo">
+                <img src="static/images/logo.png" alt="Uni42Tech Logo">
                 <span class="logo-text">Uni42Lab</span>
             </a>
             <div class="header-right">
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="tools.html" class="nav-link">Tools</a>
+                    <a href="publications.html" class="nav-link">Publications</a>
+                    <a href="news.html" class="nav-link">News</a>
                     <a href="contact.html" class="nav-link">Contact</a>
                 </nav>
             </div>
@@ -30,46 +33,7 @@
         <section class="news-section">
             <div class="news-container">
                 <div class="news-slideshow">
-                    <div class="slideshow-container">
-                        <div class="slides-wrapper">
-                            <!-- Sample news items - replace with your actual news -->
-                            <div class="news-slide active">
-                                <div class="news-item">
-                                    <div class="news-image">
-                                        <img src="static/images/news-placeholder.jpg" alt="News 1">
-                                    </div>
-                                    <div class="news-text">
-                                        <h3 class="news-title">Sample News Article 1</h3>
-                                        <p class="news-content-text">This is a sample news article. Replace this content with your actual news.</p>
-                                        <a href="#" class="news-link" target="_blank">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="news-slide">
-                                <div class="news-item">
-                                    <div class="news-image">
-                                        <img src="static/images/news-placeholder.jpg" alt="News 2">
-                                    </div>
-                                    <div class="news-text">
-                                        <h3 class="news-title">Sample News Article 2</h3>
-                                        <p class="news-content-text">This is another sample news article. Replace this content with your actual news.</p>
-                                        <a href="#" class="news-link" target="_blank">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Navigation arrows -->
-                        <button class="slide-nav prev-slide" onclick="changeSlide(-1)">&#10094;</button>
-                        <button class="slide-nav next-slide" onclick="changeSlide(1)">&#10095;</button>
-                        
-                        <!-- Navigation dots -->
-                        <div class="slide-dots">
-                            <span class="dot active" onclick="currentSlide(1)"></span>
-                            <span class="dot" onclick="currentSlide(2)"></span>
-                        </div>
-                    </div>
+                    <p class="no-news">Coming soon...</p>
                 </div>
             </div>
         </section>
@@ -134,6 +98,7 @@
         }
     });
     </script>
+    <script src="static/js/mobile-nav.js"></script>
 
 </body>
 </html>

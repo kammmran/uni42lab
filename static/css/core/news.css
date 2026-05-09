@@ -159,6 +159,10 @@
     text-align: center;
     padding: 40px;
     color: #666;
+    border: 1px solid #dfe6ee;
+    border-radius: 12px;
+    background: #f8fafc;
+    font-size: 1.02rem;
 }
 
 /* Responsive Design */
@@ -166,18 +170,33 @@
 /* Mobile Phones (up to 768px) */
 @media screen and (max-width: 768px) {
     .news-section {
-        margin-top: 5px;
+        margin-top: 2px;
+        padding: 0 0 6px;
+    }
+
+    .news-container {
+        padding: 0;
+    }
+
+    .section-header {
+        margin-bottom: 14px;
+        padding: 0;
+    }
+
+    .section-header h2 {
+        font-size: 1.3rem;
     }
 
     .slides-wrapper {
         height: auto;
-        min-height: 400px;
+        min-height: 360px;
     }
 
     .news-item {
         flex-direction: column;
-        padding: 15px;
-        gap: 15px;
+        padding: 14px;
+        gap: 12px;
+        border-radius: 12px;
     }
 
     .news-image {
@@ -186,26 +205,42 @@
 
     .news-image img {
         width: 100%;
-        height: 180px;
+        height: 170px;
+        border-radius: 8px;
     }
 
     .news-title {
-        font-size: 1.1rem;
+        font-size: 1.06rem;
     }
 
     .news-content-text {
-        font-size: 0.9rem;
+        font-size: 0.92rem;
+        line-height: 1.55;
     }
 
     .slide-nav {
-        font-size: 14px;
-        padding: 10px 12px;
+        font-size: 13px;
+        padding: 8px 10px;
+        top: auto;
+        bottom: 14px;
+        transform: none;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 999px;
     }
 
     .dot {
         height: 8px;
         width: 8px;
         margin: 0 4px;
+    }
+
+    .slide-dots {
+        padding: 14px 0 8px;
+    }
+
+    .no-news {
+        padding: 20px 14px;
+        font-size: 0.95rem;
     }
 }
 

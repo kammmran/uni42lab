@@ -94,31 +94,42 @@
 /* Mobile Phones (up to 768px) */
 @media screen and (max-width: 768px) {
     .home-section {
-        padding: 20px 0;
+        padding: 14px 0 8px;
     }
 
     .home-title h1 {
-        font-size: 1.1rem;
-        line-height: 1.5;
-        padding: 0 10px;
+        font-size: clamp(1.05rem, 4.6vw, 1.2rem);
+        line-height: 1.55;
+        padding: 0 2px;
     }
 
     .home-images {
         flex-direction: column;
-        gap: 20px;
-        padding: 0 10px;
+        gap: 16px;
+        padding: 0;
     }
 
     .image-item {
         max-width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
     }
 
     .image-item img {
-        height: 180px;
+        height: clamp(170px, 46vw, 220px);
+    }
+
+    .image-overlay {
+        opacity: 1;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 20%, rgba(0, 0, 0, 0.62) 100%);
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 0;
     }
 
     .image-title {
-        font-size: 1rem;
+        font-size: 0.98rem;
+        letter-spacing: 0.3px;
     }
 }
 

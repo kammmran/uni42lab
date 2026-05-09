@@ -1,13 +1,22 @@
 *{
     margin: 0;
 }
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     width: 70%;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: 'Segoe UI', 'Roboto', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1f2a36;
+    line-height: 1.5;
 }
 
 .header {
@@ -51,6 +60,74 @@ body {
     align-items: center;
 }
 
+.mobile-menu-toggle {
+    display: none;
+    border: 1px solid #d8dfe6;
+    background: #ffffff;
+    color: #1f2a36;
+    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-menu-toggle:hover {
+    background: #f4f7fa;
+}
+
+.mobile-menu-toggle:focus-visible {
+    outline: 2px solid #6f8aa6;
+    outline-offset: 2px;
+}
+
+.mobile-menu-toggle-bar {
+    display: none;
+}
+
+.mobile-menu-icon {
+    width: 20px;
+    height: 20px;
+    stroke: #1f2a36;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.mobile-menu-icon-close {
+    display: none;
+}
+
+body.nav-open .mobile-menu-icon-menu {
+    display: none;
+}
+
+body.nav-open .mobile-menu-icon-close {
+    display: block;
+}
+
+.mobile-nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 16, 28, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 900;
+}
+
+body.nav-open {
+    overflow: hidden;
+}
+
+body.nav-open .mobile-nav-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 .main-nav {
     display: flex;
     gap: 30px;
@@ -62,7 +139,11 @@ body {
     font-weight: 500;
     padding: 8px 16px;
     border-radius: 4px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.nav-link:hover {
+    background-color: #eef2f6;
 }
 
 main {
@@ -88,58 +169,127 @@ main {
 /* Mobile Phones (up to 768px) */
 @media screen and (max-width: 768px) {
     body {
-        width: 95%;
-        padding: 0 10px;
+        width: 100%;
+        max-width: none;
+        padding: 0 14px;
     }
 
     .header {
-        padding-top: 20px;
-        border-bottom: 5px solid #e0e0e0;
+        padding-top: 14px;
+        border-bottom: 4px solid #e0e0e0;
     }
 
     .header-container {
-        flex-direction: column;
-        gap: 15px;
-        padding: 0 10px;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 0;
     }
 
     .logo {
-        flex-direction: column;
         gap: 8px;
+        align-self: center;
     }
 
     .logo img {
-        height: 50px;
+        height: 44px;
     }
 
     .logo-text {
-        font-size: 18px;
+        font-size: 19px;
     }
 
     .header-right {
-        width: 100%;
-        justify-content: center;
+        width: auto;
+        justify-content: flex-end;
+    }
+
+    .mobile-menu-toggle {
+        display: inline-flex;
     }
 
     .main-nav {
-        flex-wrap: wrap;
-        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100dvh;
+        width: min(82vw, 320px);
+        padding: 78px 16px 20px;
+        display: flex;
+        flex-direction: column;
         gap: 10px;
-        width: 100%;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fbfd 100%);
+        box-shadow: -14px 0 36px rgba(8, 20, 34, 0.18);
+        transform: translateX(102%);
+        transition: transform 0.28s ease;
+        z-index: 1000;
     }
 
     .nav-link {
-        font-size: 14px;
-        padding: 6px 12px;
+        font-size: 0.95rem;
+        padding: 11px 12px;
+        border: 1px solid #d7e0ea;
+        border-radius: 10px;
+        background-color: #ffffff;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .nav-link:active {
+        background-color: #e8eef5;
+    }
+
+    body.nav-open .main-nav {
+        transform: translateX(0);
+    }
+
+    main {
+        margin-top: 6px;
     }
 
     .footer-container {
-        padding: 15px 10px;
+        padding: 14px 10px calc(14px + env(safe-area-inset-bottom));
+        margin-top: 12px;
     }
 
     .footer-container p {
         font-size: 0.8rem;
         text-align: center;
+    }
+}
+
+/* Small Phones (up to 480px) */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 0 10px;
+    }
+
+    .header {
+        padding-top: 10px;
+    }
+
+    .header-container {
+        gap: 10px;
+    }
+
+    .logo img {
+        height: 38px;
+    }
+
+    .logo-text {
+        font-size: 17px;
+    }
+
+    .main-nav {
+        width: min(88vw, 300px);
+        padding: 72px 12px 18px;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 10px 10px;
     }
 }
 

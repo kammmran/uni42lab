@@ -118,26 +118,31 @@
 /* Mobile Phones (up to 768px) */
 @media screen and (max-width: 768px) {
     .contact-section {
-        padding: 15px 10px;
+        padding: 12px 0;
     }
 
     .contact-content {
         flex-direction: column;
-        gap: 25px;
+        gap: 20px;
     }
 
     .contact-info {
         padding-right: 0;
-        text-align: center;
+        text-align: left;
+        background-color: #f8fafc;
+        border: 1px solid #e1e7ee;
+        border-radius: 12px;
+        padding: 14px;
     }
 
     .contact-info h3 {
-        font-size: 1.4rem;
-        margin-bottom: 15px;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
     }
 
     .contact-info p {
-        font-size: 1rem;
+        font-size: 0.96rem;
+        line-height: 1.55;
     }
 
     .contact-form-container {
@@ -155,6 +160,20 @@
     .send-button {
         width: 100%;
         align-self: stretch;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .contact-info {
+        padding: 12px;
+    }
+
+    .contact-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .contact-info p {
+        font-size: 0.93rem;
     }
 }
 
